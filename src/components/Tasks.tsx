@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { TasksHeader } from "./TasksHeader";
 import { Task, TaskType } from "./Task";
 import { AddTask } from "./AddTask";
+import { NoTasks } from "./NoTasks";
 
 export function Tasks() {
   const [tasks, setTasks] = useState<TaskType[]>([
@@ -47,9 +48,11 @@ export function Tasks() {
       <div className='flex flex-col items-center gap-6 w-full'>
         <TasksHeader tasks={tasks} />
         {
-          tasks.map(task => (
-            <Task key={task.id} task={task} onCheckTask={handleCheckTask} onRemoveTask={handleRemoveTask} />
-          ))
+          tasks.length === 0 ?
+            <NoTasks /> :
+            tasks.map(task => (
+              <Task key={task.id} task={task} onCheckTask={handleCheckTask} onRemoveTask={handleRemoveTask} />
+            ))
         }
       </div>
     </div>
