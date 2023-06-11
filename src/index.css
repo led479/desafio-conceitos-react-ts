@@ -5,4 +5,5 @@
 body {
   font-family: 'Inter', sans-serif;
   line-height: 140%;
+  @apply bg-gray-600 text-gray-100;
 }
